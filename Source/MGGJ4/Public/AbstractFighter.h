@@ -37,5 +37,13 @@ public:
 	AAbstractFighter();
 
 	void TakeDamage(float damageToTake);
+
+	// Getters
+	UFUNCTION(BlueprintPure)
+	static float GetMaxHealth(){return _MAX_HEALTH;}
+
+	// Getters
+	UFUNCTION(BlueprintPure)
+	float GetHealthPercent() { return _health/_MAX_HEALTH; }
 };
 
