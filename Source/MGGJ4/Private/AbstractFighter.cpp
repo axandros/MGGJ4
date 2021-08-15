@@ -4,6 +4,9 @@
 #include "AbstractFighter.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
+#include "Kismet/KismetMathLibrary.h"
+#include "FightingGameMode.h"
+#include "Kismet/GameplayStatics.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 const float AAbstractFighter::_MAX_HEALTH = 100.f;
@@ -12,7 +15,7 @@ const float AAbstractFighter::_MAX_HEALTH = 100.f;
 AAbstractFighter::AAbstractFighter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -36,8 +39,15 @@ AAbstractFighter::AAbstractFighter()
 
 }
 
+void AAbstractFighter::TakeDamage(float damageToTake)
+{
+	_health = _health-damageToTake;
+}
+
+
 void AAbstractFighter::MoveRight(float Val)
 {
+	//UE_LOG(LogTemp, Warning, TEXT("Moving right at %f"), Val)
 	// add movement in that direction
 	AddMovementInput(FVector(0.f, -1.f, 0.f), Val);
 }
@@ -56,6 +66,11 @@ void AAbstractFighter::HandleGuard()
 
 void AAbstractFighter::HandleJump()
 {
+}
+
+void AAbstractFighter::Tick(float deltaTime)
+{
+
 }
 
 // Called to bind functionality to input
