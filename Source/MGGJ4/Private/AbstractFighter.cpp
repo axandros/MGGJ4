@@ -6,6 +6,8 @@
 #include "Components/InputComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
+const float AAbstractFighter::_MAX_HEALTH = 100.f;
+
 // Sets default values
 AAbstractFighter::AAbstractFighter()
 {
@@ -14,6 +16,7 @@ AAbstractFighter::AAbstractFighter()
 
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
+	//GetCapsuleComponent()->ConstrainOnX
 
 	// Don't rotate when the controller rotates.
 	bUseControllerRotationPitch = false;
