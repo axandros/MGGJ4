@@ -21,4 +21,7 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player References")
 		AAbstractFighter* PlayerTwo;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Options")
+		bool bViewHitboxes;
 };
